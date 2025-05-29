@@ -1,0 +1,21 @@
+{
+	"name": "artice-saver",
+	"version": "1.0.0",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"keywords": [
+		"pocket",
+		"wallabag"
+	],
+	"author": "marcorichetta@gmail.com",
+	"license": "ISC",
+	"description": "",
+	"dependencies": {
+		"firebase-admin": "^13.4.0"
+	},
+	"engines": {
+		"node": "22.x"
+	}
+}
