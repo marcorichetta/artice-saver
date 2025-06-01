@@ -1,3 +1,4 @@
+import json
 import os
 from datetime import datetime, timezone
 
@@ -15,15 +16,12 @@ try:
     if env == "dev":
         # En desarrollo, puedes usar un archivo JSON local para las credenciales.
         cred_path = "../firebase_creds.json"
-        if not os.path.exists(cred_path):
-            raise FileNotFoundError(
-                "El archivo de credenciales de Firebase no se encontró en el directorio de desarrollo."
-            )
         credentials = credentials.Certificate(cred_path)
     else:
-        cred_json = os.environ.get("FIREBASE_SERVICE_ACCOUNT_KEY")
-        credentials = credentials.Certificate(cred_json)
-
+        # En prod el JSON de las creds está en una env variable
+        creds_str: str = os.environ.get("FIREBASE_SERVICE_ACCOUNT_KEY")
+        creds_json: dict = json.loads(creds_str)
+        credentials = credentials.Certificate(creds_json)
 except Exception as e:
     print(f"Error initializing Firestore client for RSS feed: {e}")
     raise RuntimeError("Failed to initialize Firestore client for RSS feed.") from e
