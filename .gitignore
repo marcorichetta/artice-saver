@@ -1,4 +1,11 @@
 node_modules
 .devbox
 .env
-*ac08b0bd41.json
+firebase-*.json
+
+.vercel
+*.log
+*.pyc
+__pycache__/
+.env
+.venv
